@@ -14,7 +14,7 @@
 // @grant        GM_deleteValue
 // ==/UserScript==
 
-// Copyright 2015 Stuart P. Bentley.
+// Copyright Stuart P. Bentley.
 // This work may be used freely as long as this notice is included.
 // The work is provided "as is" without warranty, express or implied.
 
