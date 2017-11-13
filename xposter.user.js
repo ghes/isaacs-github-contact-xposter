@@ -6,6 +6,7 @@
 // @version      0.1.0
 // @description  tell isaacs/github what you just told GitHub Support
 // @author       Stuart P. Bentley (@stuartpb)
+// @match        https://github.com/support
 // @match        https://github.com/contact
 // @match        https://github.com/isaacs/github/issues/new
 // @grant        GM_getValue
@@ -25,6 +26,7 @@ function dlFormContaining(elem) {
 }
 
 switch (location.href) {
+  case 'https://github.com/support':
   case 'https://github.com/contact':
     var contactDiv = document.getElementById('contact-github');
     var pageNotice = document.getElementsByClassName('page-notice')[0];
