@@ -3,7 +3,7 @@
 // ==UserScript==
 // @name         isaacs/github /contact xposter
 // @namespace    https://github.com/ghes
-// @version      0.1.0
+// @version      0.1.1
 // @description  tell isaacs/github what you just told GitHub Support
 // @author       Stuart P. Bentley (@stuartpb)
 // @match        https://github.com/support
@@ -29,7 +29,7 @@ switch (location.href) {
   case 'https://github.com/support':
   case 'https://github.com/contact':
     var contactDiv = document.getElementById('contact-github');
-    var pageNotice = document.getElementsByClassName('page-notice')[0];
+    var pageContent = document.getElementsByClassName('page-content')[0];
     // if this is the pre-submission form
     if (contactDiv) {
       var submitForm = contactDiv.getElementsByTagName('form')[0];
@@ -41,7 +41,7 @@ switch (location.href) {
           GM_setValue('saving', true);
       });
     // if this is the post-submission page and we just saved a submission
-    } else if (pageNotice && GM_getValue('saving')) {
+    } else if (pageContent && GM_getValue('saving')) {
       // unpack the saves info form elements
       var subjectInput = document.createElement('input');
       subjectInput.type = 'text';
@@ -60,9 +60,9 @@ switch (location.href) {
           GM_setValue('saving', true);
           location.href = 'https://github.com/isaacs/github/issues/new';
       });
-      pageNotice.appendChild(dlFormContaining(subjectInput));
-      pageNotice.appendChild(dlFormContaining(bodyInput));
-      pageNotice.appendChild(submitButton);
+      pageContent.appendChild(dlFormContaining(subjectInput));
+      pageContent.appendChild(dlFormContaining(bodyInput));
+      pageContent.appendChild(submitButton);
       GM_deleteValue('subject_save');
       GM_deleteValue('body_save');
       GM_deleteValue('saving');
